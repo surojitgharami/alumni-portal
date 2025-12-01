@@ -171,7 +171,7 @@ async def login(request: LoginRequest):
                 detail="Invalid email or password"
             )
         
-        token = create_access_token(data={"sub": "admin", "role": "admin", "email": request.email})
+        token = create_access_token(data={"sub": "admin", "role": "admin", "email": request.email, "_id": "admin"})
         
         from datetime import date
         return TokenResponse(
