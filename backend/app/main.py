@@ -101,6 +101,17 @@ for route_name, module in routes.items():
         app.include_router(module.router, prefix="/api")
 
 
+@app.get("/")
+async def root():
+    """Root endpoint - redirects to API docs"""
+    return {
+        "message": "Alumni Portal API",
+        "docs": "/api/docs",
+        "health": "/api/health",
+        "api": "/api"
+    }
+
+
 @app.get("/api")
 async def api_root():
     return {"message": "Alumni Portal API"}
