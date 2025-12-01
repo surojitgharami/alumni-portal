@@ -58,7 +58,7 @@ def get_cors_config():
     """Get CORS configuration based on environment"""
     if settings.ENVIRONMENT == "production":
         # Production: restrict to frontend domain only
-        allowed_origins = [settings.FRONTEND_URL, "https://*"]
+        allowed_origins = [settings.FRONTEND_URL, "https://alumni-portal-one-alpha.vercel.app"]
     else:
         # Development: allow all origins and localhost variants
         allowed_origins = ["*"]
