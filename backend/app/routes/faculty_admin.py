@@ -27,6 +27,13 @@ class FacultyListResponse(BaseModel):
     created_at: datetime
 
 
+class UpdateFacultyRequest(BaseModel):
+    name: str
+    email: EmailStr
+    department: str
+    phone: Optional[str] = None
+
+
 @router.post("/create")
 async def create_faculty(
     request: CreateFacultyRequest,
@@ -51,7 +58,6 @@ async def create_faculty(
         "email": request.email,
         "department": request.department,
         "phone": request.phone or "",
-        "registration_number": "",
         "password_hash": get_password_hash(temp_password),
         "role": "faculty",
         "created_at": datetime.utcnow(),
@@ -97,3 +103,77 @@ async def list_faculty(
         )
         for f in faculty_list
     ]
+
+
+@router.put("/{faculty_id}")
+async def update_faculty(
+    faculty_id: str,
+    request: UpdateFacultyRequest,
+    current_user: dict = Depends(get_current_admin)
+):
+    """Admin updates faculty user details"""
+    db = get_database()
+    if db is None:
+        raise HTTPException(status_code=500, detail="Database unavailable")
+    
+    if not ObjectId.is_valid(faculty_id):
+        raise HTTPException(status_code=400, detail="Invalid faculty ID")
+    
+    faculty = await db.users.find_one({"_id": ObjectId(faculty_id), "role": "faculty"})
+    if not faculty:
+        raise HTTPException(status_code=404, detail="Faculty not found")
+    
+    # Check if new email already exists (if email is different)
+    if request.email != faculty["email"]:
+        existing = await db.users.find_one({"email": request.email})
+        if existing:
+            raise HTTPException(status_code=400, detail="Email already exists")
+    
+    update_data = {
+        "name": request.name,
+        "email": request.email,
+        "department": request.department,
+        "phone": request.phone or ""
+    }
+    
+    result = await db.users.update_one(
+        {"_id": ObjectId(faculty_id)},
+        {"$set": update_data}
+    )
+    
+    if result.modified_count == 0:
+        raise HTTPException(status_code=500, detail="Failed to update faculty")
+    
+    return {
+        "id": faculty_id,
+        "name": request.name,
+        "email": request.email,
+        "department": request.department,
+        "phone": request.phone or "",
+        "message": "Faculty updated successfully"
+    }
+
+
+@router.delete("/{faculty_id}")
+async def delete_faculty(
+    faculty_id: str,
+    current_user: dict = Depends(get_current_admin)
+):
+    """Admin deletes faculty user"""
+    db = get_database()
+    if db is None:
+        raise HTTPException(status_code=500, detail="Database unavailable")
+    
+    if not ObjectId.is_valid(faculty_id):
+        raise HTTPException(status_code=400, detail="Invalid faculty ID")
+    
+    faculty = await db.users.find_one({"_id": ObjectId(faculty_id), "role": "faculty"})
+    if not faculty:
+        raise HTTPException(status_code=404, detail="Faculty not found")
+    
+    result = await db.users.delete_one({"_id": ObjectId(faculty_id)})
+    
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=500, detail="Failed to delete faculty")
+    
+    return {"message": "Faculty deleted successfully", "faculty_id": faculty_id}

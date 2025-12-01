@@ -28,6 +28,7 @@ const navSections: NavSection[] = [
     items: [
       { label: 'Student Upload', icon: <Upload className="w-5 h-5" />, path: '/admin/student-upload' },
       { label: 'Add Faculty', icon: <Plus className="w-5 h-5" />, path: '/admin/add-faculty' },
+      { label: 'Manage Faculty', icon: <Users className="w-5 h-5" />, path: '/admin/manage-faculty' },
       { label: 'Add Alumni', icon: <Plus className="w-5 h-5" />, path: '/admin/add-alumni' },
       { label: 'Alumni Accounts', icon: <Eye className="w-5 h-5" />, path: '/admin/alumni' },
       { label: 'Registrations', icon: <CheckCircle className="w-5 h-5" />, path: '/admin/registrations' }

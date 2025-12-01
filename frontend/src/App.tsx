@@ -25,6 +25,7 @@ import DonationsAdmin from './pages/Admin/Donations'
 import MassEmails from './pages/Admin/MassEmails'
 import ContentManager from './pages/Admin/ContentManager'
 import AddFaculty from './pages/Admin/AddFaculty'
+import FacultyManagement from './pages/Admin/FacultyManagement'
 import AddAlumni from './pages/Admin/AddAlumni'
 import EditAlumni from './pages/Admin/EditAlumni'
 import FacultyDirectory from './pages/FacultyDirectory'
@@ -174,6 +175,7 @@ function App() {
             
             <Route path="/admin/dashboard" element={isAdmin ? <AdminDashboard /> : <Navigate to="/login" />} />
             <Route path="/admin/add-faculty" element={isAdmin ? <AddFaculty /> : <Navigate to="/login" />} />
+            <Route path="/admin/manage-faculty" element={isAdmin ? <FacultyManagement /> : <Navigate to="/login" />} />
             <Route path="/admin/add-alumni" element={isAdmin ? <AddAlumni /> : <Navigate to="/login" />} />
             <Route path="/admin/alumni/edit/:userId" element={isAdmin ? <EditAlumni /> : <Navigate to="/login" />} />
             <Route path="/admin/student-upload" element={isAdmin ? <StudentDataUpload /> : <Navigate to="/login" />} />
