@@ -10,6 +10,7 @@ interface FacultyForm {
   email: string
   department: string
   phone: string
+  registration_number: string
 }
 
 export default function AddFaculty() {
@@ -23,7 +24,8 @@ export default function AddFaculty() {
     name: '',
     email: '',
     department: '',
-    phone: ''
+    phone: '',
+    registration_number: ''
   })
 
   const departments = [
@@ -61,7 +63,7 @@ export default function AddFaculty() {
 
     try {
       // Validate form
-      if (!form.name || !form.email || !form.department || !form.phone) {
+      if (!form.name || !form.email || !form.department || !form.phone || !form.registration_number) {
         throw new Error('All fields are required')
       }
 
@@ -69,12 +71,13 @@ export default function AddFaculty() {
         name: form.name,
         email: form.email,
         department: form.department,
-        phone: form.phone
+        phone: form.phone,
+        registration_number: form.registration_number
       })
 
       setTempPassword(response.data.temp_password)
       setSuccess(true)
-      setForm({ name: '', email: '', department: '', phone: '' })
+      setForm({ name: '', email: '', department: '', phone: '', registration_number: '' })
 
       // Auto-navigate after 30 seconds (gives admin time to copy password)
       setTimeout(() => {
@@ -207,6 +210,21 @@ export default function AddFaculty() {
                   value={form.phone}
                   onChange={handleChange}
                   placeholder="+91 XXXXX XXXXX"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                  required
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Registration Number *
+                </label>
+                <input
+                  type="text"
+                  name="registration_number"
+                  value={form.registration_number}
+                  onChange={handleChange}
+                  placeholder="FAC001 or unique faculty ID"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                   required
                 />

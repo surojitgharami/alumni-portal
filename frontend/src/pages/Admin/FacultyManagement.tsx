@@ -10,6 +10,7 @@ interface Faculty {
   email: string;
   department: string;
   phone: string;
+  registration_number: string;
   created_at: string;
 }
 
@@ -19,6 +20,7 @@ interface EditingFaculty {
   email: string;
   department: string;
   phone: string;
+  registration_number: string;
 }
 
 export default function FacultyManagement() {
@@ -66,7 +68,8 @@ export default function FacultyManagement() {
       name: fac.name,
       email: fac.email,
       department: fac.department,
-      phone: fac.phone
+      phone: fac.phone,
+      registration_number: fac.registration_number
     });
   };
 
@@ -85,19 +88,17 @@ export default function FacultyManagement() {
 
     try {
       // Validate form
-      if (!editForm.name || !editForm.email || !editForm.department || !editForm.phone) {
+      if (!editForm.name || !editForm.email || !editForm.department || !editForm.phone || !editForm.registration_number) {
         throw new Error('All fields are required');
       }
 
       // Make API call to update faculty
-      // Since backend may not have update endpoint, we'll need to delete and recreate
-      // For now, we'll assume the backend will support updates in the future
-      // Use the create endpoint pattern, assuming backend has an update endpoint
       await api.put(`/api/admin/faculty/${editForm.id}`, {
         name: editForm.name,
         email: editForm.email,
         department: editForm.department,
-        phone: editForm.phone
+        phone: editForm.phone,
+        registration_number: editForm.registration_number
       });
 
       setSuccess('Faculty updated successfully');
@@ -178,6 +179,7 @@ export default function FacultyManagement() {
                   <tr>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Name</th>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Email</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Registration #</th>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Department</th>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-gray-700">Phone</th>
                     <th className="px-6 py-4 text-right text-sm font-semibold text-gray-700">Actions</th>
@@ -189,6 +191,7 @@ export default function FacultyManagement() {
                       <tr className="border-b border-gray-200 hover:bg-gray-50 transition-colors">
                         <td className="px-6 py-4 text-gray-900 font-medium">{fac.name}</td>
                         <td className="px-6 py-4 text-gray-600">{fac.email}</td>
+                        <td className="px-6 py-4 text-gray-600 font-mono text-sm">{fac.registration_number}</td>
                         <td className="px-6 py-4 text-gray-600">{fac.department}</td>
                         <td className="px-6 py-4 text-gray-600">{fac.phone}</td>
                         <td className="px-6 py-4 text-right flex gap-2 justify-end items-center">
@@ -228,7 +231,7 @@ export default function FacultyManagement() {
                                 </button>
                               </div>
 
-                              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
                                 <div>
                                   <label className="block text-sm font-medium text-gray-700 mb-1">
                                     Name
@@ -250,6 +253,19 @@ export default function FacultyManagement() {
                                     type="email"
                                     value={editForm.email}
                                     onChange={(e) => setEditForm({ ...editForm, email: e.target.value })}
+                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                                    required
+                                  />
+                                </div>
+
+                                <div>
+                                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                                    Registration #
+                                  </label>
+                                  <input
+                                    type="text"
+                                    value={editForm.registration_number}
+                                    onChange={(e) => setEditForm({ ...editForm, registration_number: e.target.value })}
                                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                                     required
                                   />

@@ -16,6 +16,7 @@ class CreateFacultyRequest(BaseModel):
     email: EmailStr
     department: str
     phone: Optional[str] = None
+    registration_number: str
 
 
 class FacultyListResponse(BaseModel):
@@ -24,6 +25,7 @@ class FacultyListResponse(BaseModel):
     email: str
     department: str
     phone: Optional[str]
+    registration_number: str
     created_at: datetime
 
 
@@ -32,6 +34,7 @@ class UpdateFacultyRequest(BaseModel):
     email: EmailStr
     department: str
     phone: Optional[str] = None
+    registration_number: str
 
 
 @router.post("/create")
@@ -49,6 +52,11 @@ async def create_faculty(
     if existing:
         raise HTTPException(status_code=400, detail="Email already exists")
     
+    # Check if registration number exists
+    existing_reg = await db.users.find_one({"registration_number": request.registration_number})
+    if existing_reg:
+        raise HTTPException(status_code=400, detail="Registration number already exists")
+    
     # Create faculty user
     import secrets
     temp_password = secrets.token_urlsafe(12)
@@ -58,6 +66,7 @@ async def create_faculty(
         "email": request.email,
         "department": request.department,
         "phone": request.phone or "",
+        "registration_number": request.registration_number,
         "password_hash": get_password_hash(temp_password),
         "role": "faculty",
         "created_at": datetime.utcnow(),
@@ -99,6 +108,7 @@ async def list_faculty(
             email=f["email"],
             department=f["department"],
             phone=f.get("phone"),
+            registration_number=f.get("registration_number", ""),
             created_at=f.get("created_at", datetime.utcnow())
         )
         for f in faculty_list
@@ -129,11 +139,18 @@ async def update_faculty(
         if existing:
             raise HTTPException(status_code=400, detail="Email already exists")
     
+    # Check if new registration number already exists (if different)
+    if request.registration_number != faculty.get("registration_number", ""):
+        existing_reg = await db.users.find_one({"registration_number": request.registration_number})
+        if existing_reg:
+            raise HTTPException(status_code=400, detail="Registration number already exists")
+    
     update_data = {
         "name": request.name,
         "email": request.email,
         "department": request.department,
-        "phone": request.phone or ""
+        "phone": request.phone or "",
+        "registration_number": request.registration_number
     }
     
     result = await db.users.update_one(
