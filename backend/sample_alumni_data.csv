@@ -1,0 +1,39 @@
+registration_number,name,department,passout_year,email,phone,current_company,current_position,current_location
+REG202001001,Rajesh Kumar,CSE,2020,rajesh.kumar@email.com,9876543210,Google,Senior Software Engineer,Bangalore
+REG202001002,Priya Sharma,CSE,2020,priya.sharma@email.com,9876543211,Microsoft,Cloud Architect,Hyderabad
+REG202001003,Amit Patel,CSE,2020,amit.patel@email.com,9876543212,Amazon,DevOps Engineer,Pune
+REG202002001,Neha Singh,ECE,2020,neha.singh@email.com,9876543213,Intel,Hardware Design Engineer,Bangalore
+REG202002002,Vikram Reddy,ECE,2020,vikram.reddy@email.com,9876543214,Qualcomm,Firmware Developer,Hyderabad
+REG202003001,Ananya Verma,EEE,2020,ananya.verma@email.com,9876543215,Siemens,Power Systems Engineer,Mumbai
+REG202101001,Rohan Malhotra,CSE,2021,rohan.malhotra@email.com,9876543216,Apple,iOS Developer,San Francisco
+REG202101002,Sneha Gupta,CSE,2021,sneha.gupta@email.com,9876543217,Meta,Data Scientist,Bangalore
+REG202101003,Akshay Singh,CSE,2021,akshay.singh@email.com,9876543218,IBM,Full Stack Developer,Pune
+REG202102001,Divya Kumar,ECE,2021,divya.kumar@email.com,9876543219,Samsung,Network Engineer,Bangalore
+REG202102002,Arjun Nair,ECE,2021,arjun.nair@email.com,9876543220,NVIDIA,VLSI Design Engineer,Bangalore
+REG202103001,Kavya Desai,MECH,2021,kavya.desai@email.com,9876543221,Bosch,Mechanical Engineer,Pune
+REG202201001,Aditya Rao,CSE,2022,aditya.rao@email.com,9876543222,Google,Software Engineer,Bangalore
+REG202201002,Pooja Sharma,CSE,2022,pooja.sharma@email.com,9876543223,Adobe,Product Engineer,Hyderabad
+REG202201003,Vikas Kumar,CSE,2022,vikas.kumar@email.com,9876543224,Goldman Sachs,Analyst,Mumbai
+REG202202001,Shreya Gupta,ECE,2022,shreya.gupta@email.com,9876543225,TCS,Network Specialist,Bangalore
+REG202202002,Harsh Patel,ECE,2022,harsh.patel@email.com,9876543226,Accenture,Systems Engineer,Pune
+REG202203001,Nikita Singh,EEE,2022,nikita.singh@email.com,9876543227,Infosys,Electrical Engineer,Hyderabad
+REG202204001,Sanjay Verma,IT,2022,sanjay.verma@email.com,9876543228,Wipro,IT Consultant,Bangalore
+REG202205001,Anjali Bhat,CIVIL,2022,anjali.bhat@email.com,9876543229,L&T,Civil Engineer,Mumbai
+REG202301001,Rohan Singh,CSE,2023,rohan.singh@email.com,9876543230,Intel,Software Engineer,Bangalore
+REG202301002,Deepika Reddy,CSE,2023,deepika.reddy@email.com,9876543231,Oracle,Database Administrator,Hyderabad
+REG202301003,Nikhil Kumar,CSE,2023,nikhil.kumar@email.com,9876543232,Flipkart,Backend Engineer,Bangalore
+REG202302001,Sakshi Jain,ECE,2023,sakshi.jain@email.com,9876543233,CISCO,Network Engineer,Pune
+REG202302002,Rahul Nair,ECE,2023,rahul.nair@email.com,9876543234,Broadcom,Hardware Engineer,Bangalore
+REG202303001,Anjali Patel,MECH,2023,anjali.patel@email.com,9876543235,Mahindra,Manufacturing Engineer,Pune
+REG202304001,Vipul Sharma,CHEM,2023,vipul.sharma@email.com,9876543236,BASF,Process Engineer,Mumbai
+REG202401001,Aryan Kumar,CSE,2024,aryan.kumar@email.com,9876543237,Amazon,Associate Engineer,Bangalore
+REG202401002,Ishita Gupta,CSE,2024,ishita.gupta@email.com,9876543238,Microsoft,Software Engineer,Hyderabad
+REG202402001,Karan Singh,ECE,2024,karan.singh@email.com,9876543239,Qualcomm,Junior Engineer,Bangalore
+REG202402002,Nisha Patel,ECE,2024,nisha.patel@email.com,9876543240,Intel,Intern,Hyderabad
+REG202403001,Rahul Reddy,EEE,2024,rahul.reddy@email.com,9876543241,Siemens,Trainee,Pune
+REG202404001,Priya Verma,IT,2024,priya.verma@email.com,9876543242,TCS,Associate,Bangalore
+REG202405001,Samir Khan,CIVIL,2024,samir.khan@email.com,9876543243,Larsen & Toubro,Graduate Engineer,Mumbai
+REG202501001,Bhavesh Kumar,CSE,2025,bhavesh.kumar@email.com,9876543244,Google,Software Engineer,Bangalore
+REG202501002,Divya Singh,CSE,2025,divya.singh@email.com,9876543245,Meta,Engineer,San Francisco
+REG202502001,Ravi Patel,ECE,2025,ravi.patel@email.com,9876543246,NVIDIA,Hardware Engineer,Bangalore
+REG202601001,Sid Sharma,CSE,2026,sid.sharma@email.com,9876543247,Apple,Developer,Bangalore

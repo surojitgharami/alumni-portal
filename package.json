@@ -1,0 +1,17 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "A comprehensive alumni portal with separate frontend and backend, featuring student verification, membership payments, job postings, and event management.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dompurify": "^3.3.0",
+    "papaparse": "^5.5.3",
+    "xlsx": "^0.18.5"
+  }
+}
