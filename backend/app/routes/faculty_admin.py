@@ -51,6 +51,7 @@ async def create_faculty(
         "email": request.email,
         "department": request.department,
         "phone": request.phone or "",
+        "registration_number": "",
         "password_hash": get_password_hash(temp_password),
         "role": "faculty",
         "created_at": datetime.utcnow(),
